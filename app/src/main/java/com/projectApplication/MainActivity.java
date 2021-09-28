@@ -1,0 +1,131 @@
+package com.projectApplication;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.graphics.Color;
+import android.media.MediaPlayer;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+
+public class MainActivity extends AppCompatActivity {
+    private Button changeSon;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+
+        // Executing creator of mother class
+        super.onCreate(savedInstanceState);
+        changeSon = (Button) findViewById(R.id.button2);
+        changeSon.setOnClickListener(new View.OnClickListener() {
+            private MediaPlayer mediaPlayer;
+
+            @Override
+            public void onClick(View view) {
+                this.mediaPlayer = MediaPlayer.create(this, R.raw.son);
+
+            this.mediaPlayer.start();
+
+        }
+        });
+
+        // Loading the layout from xml file
+        setContentView(R.layout.activity_main);
+
+        // Testing messages in Logcat
+        Log.e("DEVE304", "Testing error message.");
+        Log.w("DEVE304", "Testing error message.");
+        Log.i("DEVE304", "Testing error message.");
+        Log.d("DEVE304", "Testing error message.");
+        Log.v("DEVE304", "Testing error message.");
+
+        Log.v("DEVE304", "onCreate()");
+
+/*
+        // Adding a listener to a button
+        // Try the application without that code and then remove comment and observe what changed.
+        final Button button = (Button) findViewById(R.id.mybutton1);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // your handler code here
+                Log.v("DEVE304", "Button clicked : programmed listener()");
+
+            }
+        });
+        */
+
+
+    }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.v("DEVE304", "onStart()");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.v("DEVE304", "onStop()");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.v("DEVE304", "onResume()");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.v("DEVE304", "onPause()");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.v("DEVE304", "onDestroy()");
+    }
+
+    public void buttonClick1(View view) {
+
+        int iVariable;
+        iVariable = 4;
+        iVariable --;
+        iVariable --;
+        iVariable --;
+        iVariable --;
+
+        // This will generate an exception
+        Log.e("DEVE304", String.valueOf(12/iVariable));
+    }
+
+    public void buttonClick2(View view) {
+
+        // Change color of button 1
+        Button thisButton1 = (Button) findViewById(R.id.mybutton1);
+        thisButton1.setBackgroundColor(Color.GREEN);
+
+        //Change color of button 2
+        Button thisButton2 = (Button) view;
+        thisButton2.setBackgroundColor(Color.RED);
+
+        try {
+            int iVariable;
+            iVariable = 4;
+            iVariable --;
+            iVariable --;
+            iVariable --;
+            iVariable --;
+
+            // This will generate an exception
+            Log.e("DEVE304", String.valueOf(12/iVariable));
+        }
+        catch (Exception e) {
+            System.out.println("buttonClick2 : Exception :  " + e.getMessage());
+        }
+    }
+
+}
